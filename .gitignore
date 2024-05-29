@@ -69,6 +69,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-cmake-build-*/*
+build/*
 bin/*
 logs/*

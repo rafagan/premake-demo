@@ -25,12 +25,13 @@ void Logger::printStringMacro() {
 void Logger::configNewOuputStreams() {
     const auto path = string(LOGS_PATH) + "/output.log";
     this->logFile = ofstream(path.c_str());
-    auto* originalCoutBuffer = cout.rdbuf();
+    this->originalCoutBuffer = cout.rdbuf();
 
     this->dualBuffer = std::make_unique<DualStreamBuffer>(originalCoutBuffer, logFile.rdbuf());
     cout.rdbuf(dualBuffer.get());
 }
 
 void Logger::close() {
+    cout.rdbuf(this->originalCoutBuffer);
     logFile.close();
 }

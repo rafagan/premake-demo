@@ -9,6 +9,7 @@ class Logger {
 private:
     std::ofstream logFile;
     std::unique_ptr<DualStreamBuffer> dualBuffer;
+    std::streambuf* originalCoutBuffer = nullptr;
 public:
     static void printFlagMacro();
     static void printValueMacro();
